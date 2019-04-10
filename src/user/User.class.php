@@ -7,11 +7,11 @@ class User
     private $senha;
 
 
-    public function __construct($nome,$email,$senha)
+    public function __construct($body)
     {
-        $this->nome = $nome;
-        $this->nome = $email;
-        $this->nome = $senha;
+        $this->nome = $body->nome;
+        $this->email = $body->email;
+        $this->senha = $body->senha;
     }
 
     public function getNome()

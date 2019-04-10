@@ -10,7 +10,11 @@ class App
 {
 
     private $app;
-    private $config = ['settings' => ['addContentLengthHeader' => false, 'displayErrorDetails' => true]];
+    private $config = ['settings' => [
+        'addContentLengthHeader' => false, 
+        'displayErrorDetails' => true
+        ]
+    ];
 
     function __construct()
     {
@@ -21,8 +25,16 @@ class App
 
     private function routes()
     {
-        $this->app->group('/v1', function(){
-            $this->get('/users', '\UserController:get');
+        $this->app->group('/v1', function()
+        {
+
+            $this->group('/users', function()
+            {
+                $this->get('', '\UserController:get');
+                $this->post('', '\UserController:post');
+
+            });
+
         });    
     }
 }
