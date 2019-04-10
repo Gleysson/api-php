@@ -3,14 +3,14 @@
 use \Slim\App as SlimApp;
 
 require "./vendor/autoload.php";
-require "./src/config.php";
+require "./src/app.config.php";
 
 
 class App
 {
 
     private $app;
-    private $config = ['settings' => ['addContentLengthHeader' => false]];
+    private $config = ['settings' => ['addContentLengthHeader' => false, 'displayErrorDetails' => true]];
 
     function __construct()
     {
@@ -22,7 +22,7 @@ class App
     private function routes()
     {
         $this->app->group('/v1', function(){
-            $this->get('/users/{name}', '\UserController:get');
+            $this->get('/users', '\UserController:get');
         });    
     }
 }

@@ -1,5 +1,6 @@
 {
     "require": {
-        "slim/slim": "^3.12"
+        "slim/slim": "^3.12",
+        "rbdwllr/reallysimplejwt": "^2.0"
     }
 }

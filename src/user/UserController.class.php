@@ -4,9 +4,26 @@ use Psr\Http\Message\ResponseInterface as Response;
 
 
 class UserController{
+
+    private $service = null;
+
+
+    public function __construct(){
+        $this->service = new UserService();
+        
+    }
+
     
-    public function get( Request $request,  Response $response, $args) {
-        return $response->withJson(array("nome" => $args['name']),200);
+    public function get( Request $request,  Response $response, $args){   
+            $users = $this->service->list();
+            return $response->withJson($users['data'],$users['status']);
+
+    }
+
+    public function post( Request $request,  Response $response, $args){
+        $users = $this->service->list();
+        return $response->withJson($users['data'],$users['status']);
+
     }
 
 }
